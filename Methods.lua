@@ -37,3 +37,25 @@ local function WeightRandom(tbl)
 		end
 	end
 end
+
+---------------------------------------------->>>
+--Fibonacci
+local function Fibonacci(uNumSum)
+	local uBaseVal = 0
+	local uAddVal = 1
+	local FibonacciFunc
+	FibonacciFunc = function(uNumSum)
+		print(uBaseVal)
+		if uNumSum == 0 then
+			return
+		end
+
+		local uTmpVal = uBaseVal
+		uBaseVal = uBaseVal + uAddVal
+		uAddVal = uTmpVal
+		uNumSum = uNumSum - 1
+		return FibonacciFunc(uNumSum)
+	end
+
+	FibonacciFunc(uNumSum)
+end
