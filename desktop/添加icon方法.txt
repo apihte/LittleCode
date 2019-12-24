@@ -1,0 +1,23 @@
+﻿一般步骤是：
+step1：将.c源文件编译成.o目标文件
+step2：将.rc资源源文件及其资源编译成.res资源文件
+step3：将.o文件和.res文件连接成.exe文件
+
+示例：
+例如，有一个windows程序是prog.exe，这个程序的源文件是prog.c。现在打算把图标prog.ico添加到prog.exe程序中，这样做：
+
+1、创建prog.rc文件，文件内容：
+
+        A ICON "prog.ico"
+
+2、生成prog.res文件
+
+      windres -i prog.rc --input-format=rc -o prog.res -O coff
+
+3、将prog.c编译成prog.o文件
+
+     gcc -c -o prog.o prog.c
+
+4、连接成exe文件
+
+   gcc prog.o prog.res -o prog.exe
